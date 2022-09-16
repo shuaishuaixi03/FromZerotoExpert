@@ -17,7 +17,9 @@ public class testController {
         if (cookies != null) {
             // 遍历cookies，找到对应的cookie
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("wcx")) {
+                // Java中字符串的比较不能用 ==
+                // cookie的key和value都要判断，防止伪造cookie
+                if (cookie.getName().equals("wcx") && cookie.getValue().equals("001")) {
                     myCookie = cookie;
                     break;
                 }
@@ -33,5 +35,4 @@ public class testController {
             return "Hi, Welcome To From Zero To Expert";
         }
     }
-
 }
