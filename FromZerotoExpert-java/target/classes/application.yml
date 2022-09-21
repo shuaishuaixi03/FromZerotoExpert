@@ -1,2 +1,9 @@
 server:
   port: 8080
+  servlet:
+    context-path: /FromZerotoExpert
+spring:
+  datasource:
+    url: jdbc:mysql://47.98.198.2:3306/from_zeroto_expert?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: wcx
+    password: 123456
