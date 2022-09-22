@@ -14,9 +14,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private UserMapper userMapper;
     @Override
     public User getOneByName(String name) {
-//        if (name == null) {
-//            throw new
-//        }
         User user = userMapper.selectOne(new QueryWrapper<User>().eq("user_name", name));
         return user;
     }
