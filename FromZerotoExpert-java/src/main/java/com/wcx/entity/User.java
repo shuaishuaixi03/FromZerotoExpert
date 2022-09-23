@@ -8,6 +8,9 @@ import lombok.Data;
 
 import javax.validation.constraints.Email;
 
+/**
+ * 用户表
+ */
 @Data
 @TableName("user")
 public class User {

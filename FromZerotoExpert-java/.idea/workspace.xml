@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2c05093-bb1c-43c4-a984-af83020da2ca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/controller/DisallowWordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/entity/DisallowWord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/mapper/DisallowWordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/service/DisallowWordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/service/impl/DisallowWordServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FromZerotoExpert-java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FromZerotoExpert-java.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/controller/userController/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/controller/userController/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/forms/RegisterForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/forms/RegisterForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/utils/Trie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/utils/Trie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/utils/ValidUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/utils/ValidUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/controller/userController/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/controller/userController/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/utils/Trie$TrieNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/utils/Trie$TrieNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/utils/Trie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/utils/Trie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/utils/ValidUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/utils/ValidUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FromZerotoExpert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../FromZerotoExpert.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,6 +271,9 @@
       <workItem from="1663760783878" duration="2479000" />
       <workItem from="1663763300135" duration="8170000" />
       <workItem from="1663809706277" duration="10801000" />
+      <workItem from="1663859716889" duration="1336000" />
+      <workItem from="1663916281006" duration="3324000" />
+      <workItem from="1663920365153" duration="833000" />
     </task>
     <servers />
   </component>
@@ -346,14 +356,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wcx/utils/ValidUtil.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/wcx/controller/userController/RegisterController.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wcx/controller/userController/RegisterController.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="9" />
+          <line>50</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wcx/controller/DisallowWordController.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

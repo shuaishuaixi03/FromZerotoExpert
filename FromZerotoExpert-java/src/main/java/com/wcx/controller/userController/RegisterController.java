@@ -1,6 +1,5 @@
 package com.wcx.controller.userController;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.wcx.VO.ResultVO;
 import com.wcx.entity.User;
 import com.wcx.forms.RegisterForm;
@@ -10,6 +9,7 @@ import com.wcx.utils.ValidUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +21,15 @@ import javax.validation.Valid;
 @RestController
 @Slf4j
 @Validated
+@Component
 public class RegisterController {
+    private static UserService userService;
+
     @Autowired
-    private UserService userService;
+    public void setUserService(UserService userService) {
+        RegisterController.userService = userService;
+    }
+
 
     @PostMapping("/register")
     private ResultVO register(@RequestBody @Valid RegisterForm registerForm, BindingResult bindingResult) {

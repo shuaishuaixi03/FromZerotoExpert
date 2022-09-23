@@ -3,7 +3,7 @@ package com.wcx.utils;
 import java.util.HashMap;
 
 public class Trie {
-    class TrieNode {
+    static class TrieNode {
         // 字符为键，树节点为值
         private HashMap<Character, TrieNode> children = new HashMap<>();
         // 判断是否是树的叶子节点
@@ -47,5 +47,12 @@ public class Trie {
     public boolean startPrefix(String prefix) {
         TrieNode cur = searchPrefix(prefix);
         return cur != null;
+    }
+    public static Trie constructTrie(String[] words) {
+        Trie trie = new Trie();
+        for (int i = 0; i < words.length; i ++) {
+            trie.insert(words[i]);
+        }
+        return trie;
     }
 }

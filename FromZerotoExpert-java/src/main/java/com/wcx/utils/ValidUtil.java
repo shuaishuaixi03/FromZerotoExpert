@@ -4,6 +4,16 @@ import com.wcx.common.UserException;
 import com.wcx.enums.UserExceptionEnum;
 
 public class ValidUtil {
+//    private static String[] words = {""};
+    private static Trie trie = new Trie();
+
+//    public static void setWords(String[] words) {
+//        ValidUtil.words = words;
+//    }
+
+    public static void setTrie(Trie trie) {
+        ValidUtil.trie = trie;
+    }
 
     /** 判断用户账号是否符合要求 */
     public static boolean isVaildAccount(String account) {
@@ -32,11 +42,6 @@ public class ValidUtil {
         // 昵称长度不符合，返回false
         if (name.length() < 2 || name.length() > 16) {
             return false;
-        }
-        String[] words = {"尼玛", "sb", "草泥马"};
-        Trie trie = new Trie();
-        for (int i = 0; i < words.length; i ++) {
-            trie.insert(words[i]);
         }
         return true && !trie.startPrefix(name);
     }
