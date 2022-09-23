@@ -14,6 +14,9 @@ public class ValidUtil {
     public static void setTrie(Trie trie) {
         ValidUtil.trie = trie;
     }
+    public static Trie getTrie() {
+        return ValidUtil.trie;
+    }
 
     /** 判断用户账号是否符合要求 */
     public static boolean isVaildAccount(String account) {
@@ -43,7 +46,7 @@ public class ValidUtil {
         if (name.length() < 2 || name.length() > 16) {
             return false;
         }
-        return true && !trie.startPrefix(name);
+        return true && !trie.searchWord(name);
     }
     /** 判断用户密码是否符合规范*/
     public static boolean isVaildPassword(String password) {

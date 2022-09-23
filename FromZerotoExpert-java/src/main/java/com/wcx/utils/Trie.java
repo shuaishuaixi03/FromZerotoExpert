@@ -25,6 +25,23 @@ public class Trie {
         }
         cur.isEnd = true;
     }
+    /** 删除一个字符串 */
+    public void delete(String word) {
+        if (searchWord(word)) {
+            TrieNode cur = root;
+            for (int i = 0; i < word.length() - 1; i ++) {
+                char c = word.charAt(i);
+                cur = cur.children.get(c);
+            }
+            char c = word.charAt(word.length() - 1);
+            if (cur.children.get(c).children.size() == 0) {
+                cur.children.remove(c);
+            } else {
+                cur.children.get(c).isEnd = false;
+            }
+        }
+
+    }
     /** 得到前缀搜索得到的树节点 */
     private TrieNode searchPrefix(String prefix) {
         TrieNode cur = root;
@@ -54,5 +71,20 @@ public class Trie {
             trie.insert(words[i]);
         }
         return trie;
+    }
+
+    public static void main(String[] args) {
+        Trie trie = new Trie();
+        trie.insert("ab");
+        trie.insert("abd");
+        trie.insert("abe");
+        trie.insert("ac");
+        trie.insert("acf");
+        trie.insert("ca");
+        System.out.println(trie.searchWord("ab"));
+        trie.delete("ab");
+        System.out.println(trie.searchWord("ab"));
+        System.out.println(trie.searchWord("abd"));
+        System.out.println(trie.searchWord("abe"));
     }
 }

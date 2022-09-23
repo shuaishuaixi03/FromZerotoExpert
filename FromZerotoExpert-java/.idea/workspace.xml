@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2c05093-bb1c-43c4-a984-af83020da2ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/controller/DisallowWordController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/entity/DisallowWord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/mapper/DisallowWordMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/service/DisallowWordService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/service/impl/DisallowWordServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/controller/userController/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/controller/userController/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/controller/DisallowWordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/controller/DisallowWordController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/utils/Trie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/utils/Trie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/utils/ValidUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/utils/ValidUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/controller/userController/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/controller/userController/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/utils/Trie$TrieNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/utils/Trie$TrieNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/controller/DisallowWordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/controller/DisallowWordController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/utils/Trie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/utils/Trie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/utils/ValidUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/utils/ValidUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FromZerotoExpert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../FromZerotoExpert.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,6 +265,8 @@
       <workItem from="1663859716889" duration="1336000" />
       <workItem from="1663916281006" duration="3324000" />
       <workItem from="1663920365153" duration="833000" />
+      <workItem from="1663921477663" duration="5000" />
+      <workItem from="1663923866396" duration="1560000" />
     </task>
     <servers />
   </component>
@@ -367,7 +360,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wcx/controller/DisallowWordController.java</url>
-          <line>22</line>
+          <line>23</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
