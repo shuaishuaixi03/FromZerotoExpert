@@ -4,6 +4,7 @@ import com.wcx.VO.ResultVO;
 import com.wcx.entity.User;
 import com.wcx.forms.RegisterForm;
 import com.wcx.service.UserService;
+import com.wcx.utils.PasswordUtil;
 import com.wcx.utils.ResultVOUtil;
 import com.wcx.utils.ValidUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -56,8 +57,16 @@ public class RegisterController {
             log.error("账号已存在");
             return ResultVOUtil.fail(6, "账号已存在");
         }
+        // 密码加密
+        String salt = PasswordUtil.salt();
+        String entryptPassword = PasswordUtil.getPBKDF2(
+                registerForm.getUserPassword(),
+                salt
+        );
+        registerForm.setUserPassword(entryptPassword);
         User user = new User();
         BeanUtils.copyProperties(registerForm, user);
+        user.setUserSalt(salt);
         userService.addOne(user);
         return ResultVOUtil.success();
     }

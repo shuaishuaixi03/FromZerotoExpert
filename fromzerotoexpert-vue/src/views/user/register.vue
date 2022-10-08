@@ -1,16 +1,16 @@
 <template>
   <el-form :model="registerFrom" :rules="rules" ref="registerFrom" label-width="100px" class="demo-ruleForm">
     <el-form-item label="用户昵称" prop="userName">
-      <el-input v-model="registerFrom.userName"></el-input>
+      <el-input v-model="registerFrom.userName" label-width="auto"></el-input>
     </el-form-item>
     <el-form-item label="用户账号" prop="userAccount">
-      <el-input v-model="registerFrom.userAccount"></el-input>
+      <el-input v-model="registerFrom.userAccount" label-width="auto"></el-input>
     </el-form-item>
     <el-form-item label="用户密码" prop="userPassword">
-      <el-input v-model="registerFrom.userPassword"></el-input>
+      <el-input v-model="registerFrom.userPassword" label-width="auto" show-password></el-input>
     </el-form-item>
     <el-form-item label="用户邮箱" prop="userEmail">
-      <el-input v-model="registerFrom.userEmail"></el-input>
+      <el-input v-model="registerFrom.userEmail" label-width="auto"></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="submitForm('registerFrom')">注册</el-button>

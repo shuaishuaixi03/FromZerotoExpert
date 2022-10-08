@@ -28,4 +28,7 @@ public class User {
 
     // 用户邮箱
     private String userEmail;
+
+    // 用户盐值
+    private String userSalt;
 }

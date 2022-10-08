@@ -12,6 +12,10 @@ Vue.use(Element)
 import axios from 'axios'
 Vue.prototype.$axios = axios
 
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
+
+
 import './axios.js'
 
 new Vue({

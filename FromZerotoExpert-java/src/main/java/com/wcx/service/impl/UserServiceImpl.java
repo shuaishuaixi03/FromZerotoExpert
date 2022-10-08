@@ -20,7 +20,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public User getOneByAccount(String account) {
-        User user = userMapper.selectOne(new QueryWrapper<User>().eq("user_name", account));
+        User user = userMapper.selectOne(new QueryWrapper<User>().eq("user_account", account));
         return user;
     }
 

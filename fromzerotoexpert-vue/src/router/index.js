@@ -1,19 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Register from "@/views/user/register";
+import Login from "@/views/user/login";
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
     name: 'Index',
-    redirect: {name: 'register'}
+    redirect: {name: 'login'}
   },
   {
     path: '/register',
     name: 'register',
     component: Register
-  }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
 
   // {
   //   path: '/',
