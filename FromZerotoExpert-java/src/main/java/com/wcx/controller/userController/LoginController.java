@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 @RestController
@@ -53,7 +54,8 @@ public class LoginController {
         // 根据账号生成accountId
         String accountId = AccountIdUtil.createAccountId(loginForm.getLoginAccount());
         // 将accountId 与 sessionId 绑定
-        redisTemplate.opsForValue().set(accountId, sessionId);
+        redisTemplate.opsForList().remove(accountId, 0, 0);
+        redisTemplate.opsForList().rightPushAll(accountId, sessionId, System.currentTimeMillis());
         redisTemplate.expire(accountId, 60*60*24, TimeUnit.SECONDS);
         Cookie cookie = new Cookie("accountId",accountId);
         response.addCookie(cookie);
@@ -65,7 +67,7 @@ public class LoginController {
             for (Cookie cookie : request.getCookies()) {
                 if (cookie.getName().equals("accountId")) {
                     String accountId = cookie.getValue();
-                    String sessionId = (String) redisTemplate.opsForValue().get(accountId);
+                    String sessionId = (String) redisTemplate.opsForList().index(accountId, 0);
                     if (sessionId == null) {
                         return ResultVOUtil.fail(430, "请重新登录");
                     }
