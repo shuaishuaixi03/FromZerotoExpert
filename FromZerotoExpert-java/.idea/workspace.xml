@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2c05093-bb1c-43c4-a984-af83020da2ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/VO/UserCountVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wcx/controller/StatisticsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wcx/controller/userController/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wcx/controller/userController/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wcx/controller/userController/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wcx/controller/userController/LoginController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,6 +280,7 @@
       <workItem from="1665294539065" duration="3387000" />
       <workItem from="1665297953425" duration="4776000" />
       <workItem from="1665399238089" duration="4414000" />
+      <workItem from="1665403844959" duration="2011000" />
     </task>
     <servers />
   </component>

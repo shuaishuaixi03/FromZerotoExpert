@@ -62,21 +62,38 @@ public class LoginController {
         return ResultVOUtil.success("登录");
     }
     @GetMapping("/isLogin")
-    public ResultVO isLogin(HttpServletRequest request, HttpServletResponse response) {
-        if (request.getCookies() != null) {
-            for (Cookie cookie : request.getCookies()) {
-                if (cookie.getName().equals("accountId")) {
-                    String accountId = cookie.getValue();
-                    String sessionId = (String) redisTemplate.opsForList().index(accountId, 0);
-                    if (sessionId == null) {
-                        return ResultVOUtil.fail(430, "请重新登录");
-                    }
-                    if (sessionId.equals(request.getSession().getId())) {
-                        return ResultVOUtil.success();
-                    }
-                }
+    public ResultVO isLogin(HttpServletRequest request) {
+        if (getCookie(request, "accountId") != null) {
+            Cookie cookie = getCookie(request, "accountId");
+            String accountId = cookie.getValue();
+            String sessionId = (String) redisTemplate.opsForList().index(accountId, 0);
+            if (sessionId == null) {
+                return ResultVOUtil.fail(430, "请重新登录");
+            }
+            if (sessionId.equals(request.getSession().getId())) {
+                return ResultVOUtil.success();
             }
         }
         return ResultVOUtil.fail(430, "请重新登录");
+    }
+
+    @GetMapping("/logout")
+    public ResultVO logout(HttpServletRequest request) {
+        if (isLogin(request).getCode() != 0) {
+            return ResultVOUtil.fail(431, "请先登录");
+        }
+        String accountId = getCookie(request, "accountId").getValue();
+        redisTemplate.opsForList().remove(accountId, 0, 0);
+        return ResultVOUtil.success("退出登录成功");
+    }
+    private Cookie getCookie(HttpServletRequest request, String target) {
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if (cookie.getName().equals(target)) {
+                    return cookie;
+                }
+            }
+        }
+        return null;
     }
 }
