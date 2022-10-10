@@ -2,18 +2,30 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Register from "@/views/user/register";
 import Login from "@/views/user/login";
+import Fromzerotoexpert from "@/views/fromzerotoexpert";
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
     name: 'Index',
-    redirect: {name: 'login'}
+    redirect: {name: 'fromzerotoexpert'}
+  },
+  {
+    path: '/fromzerotoexpert',
+    name: 'fromzerotoexpert',
+    component: Fromzerotoexpert,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/register',
     name: 'register',
-    component: Register
+    component: Register,
+    meta: {
+      requireAuth: true
+    }
   },
   {
     path: '/login',
