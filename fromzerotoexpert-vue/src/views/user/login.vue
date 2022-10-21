@@ -1,21 +1,35 @@
 <template>
-  <el-form :model="loginForm" :rules="rules" ref="loginForm" label-width="100px" class="demo-ruleForm">
-    <el-form-item label="用户账号" prop="loginAccount">
-      <el-input v-model="loginForm.loginAccount" label-width="auto"></el-input>
-    </el-form-item>
-    <el-form-item label="用户密码" prop="loginAccount">
-      <el-input v-model="loginForm.loginPassword" label-width="auto" show-password></el-input>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="submitForm('loginForm')">登录</el-button>
-      <el-button @click="resetForm('loginForm')">重置</el-button>
-    </el-form-item>
-  </el-form>
+
+  <div>
+<!--    <websitedata style="margin: auto"></websitedata>-->
+    <h1>登录页面</h1>
+    <ol style="text-align: left"><span style="color: chartreuse">登录成功会自动跳转到首页</span></ol>
+    <el-container>
+      <el-main>
+        <el-form :model="loginForm" :rules="rules" ref="loginForm" label-width="100px" class="demo-ruleForm">
+          <el-form-item label="用户账号" prop="loginAccount">
+            <el-input v-model="loginForm.loginAccount" label-width="auto"></el-input>
+          </el-form-item>
+          <el-form-item label="用户密码" prop="loginPassword">
+            <el-input v-model="loginForm.loginPassword" label-width="auto" show-password></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submitForm('loginForm')">登录</el-button>
+            <el-button @click="resetForm('loginForm')">重置</el-button>
+            <el-button type="info" @click="gotoRegister()">注册账号</el-button>
+          </el-form-item>
+        </el-form>
+      </el-main>
+    </el-container>
+  </div>
+
 </template>
 
 <script>
+// import Websitedata from "@/components/websitedata";
 export default {
   name: "login",
+  // components: {Websitedata},
   data() {
     return {
       loginForm: {
@@ -40,7 +54,10 @@ export default {
         if (valid) {
           this.$axios.post("/login", this.loginForm).then(res => {
             if (res.data.code == 0) {
-              alert(res.data.data)
+              this.$cookies.set("username", res.data.data.userName, "0")
+              this.$router.push('/fromzerotoexpert')
+            } else {
+              alert(res.data.msg)
             }
           })
         } else {
@@ -50,11 +67,12 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    gotoRegister() {
+      this.$router.push('/register')
     }
   }
 }
 </script>
-
 <style scoped>
-
 </style>

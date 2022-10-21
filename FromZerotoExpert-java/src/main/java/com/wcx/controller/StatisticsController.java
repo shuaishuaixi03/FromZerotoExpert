@@ -34,4 +34,5 @@ public class StatisticsController {
         userCountVO.setRealtimeCount(realtimeCount);
         return ResultVOUtil.success(userCountVO);
     }
+
 }

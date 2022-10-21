@@ -17,7 +17,7 @@ public class PasswordUtil {
     public static String getPBKDF2(String password, String salt) {
         //将16进制字符串形式的salt转换成byte数组
         byte[] bytes = java.util.Base64.getDecoder().decode(salt);
-        KeySpec spec = new PBEKeySpec(password.toCharArray(), bytes, 100, 256);
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), bytes, 10, 256);
         SecretKeyFactory secretKeyFactory = null;
         try { //PBKDF2WithHmacSHA1  PBKDF2WithHmacSHA256
             secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
