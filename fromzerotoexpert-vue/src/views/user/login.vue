@@ -1,7 +1,6 @@
 <template>
 
   <div>
-<!--    <websitedata style="margin: auto"></websitedata>-->
     <h1>登录页面</h1>
     <ol style="text-align: left"><span style="color: chartreuse">登录成功会自动跳转到首页</span></ol>
     <el-container>
@@ -26,10 +25,8 @@
 </template>
 
 <script>
-// import Websitedata from "@/components/websitedata";
 export default {
   name: "login",
-  // components: {Websitedata},
   data() {
     return {
       loginForm: {
@@ -53,12 +50,8 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$axios.post("/login", this.loginForm).then(res => {
-            if (res.data.code == 0) {
-              this.$cookies.set("username", res.data.data.userName, "0")
-              this.$router.push('/fromzerotoexpert')
-            } else {
-              alert(res.data.msg)
-            }
+            this.$cookies.set("username", res.data.data.userName)
+            this.$router.push('/fromzerotoexpert')
           })
         } else {
           console.log('表单验证不通过！');

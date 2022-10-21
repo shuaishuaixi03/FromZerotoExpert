@@ -1,6 +1,5 @@
 <template>
   <div>
-<!--    <websitedata style="margin: auto"></websitedata>-->
     <h1>注册页面</h1>
     <ol style="text-align: left"><span style="color: cornflowerblue">长度限制: </span>昵称:2-10位，账号、密码:6-16位</ol>
     <ol style="text-align: left"><span style="color: cornflowerblue">格式限制: </span>账号:纯数字，密码:必须包含数字和字母，邮箱:正确的邮箱格式</ol>
@@ -65,11 +64,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$axios.post("/register", this.registerFrom).then(res => {
-            if (res.data.code == 0) {
               alert("注册成功")
-            } else {
-              alert(res.data.msg)
-            }
           })
         } else {
           console.log('表单验证不通过！');

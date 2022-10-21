@@ -1,10 +1,13 @@
 <template>
   <div :data="websitedataform">
-    ip: <span>{{websitedataform.ip}}</span>
-    <el-divider direction="vertical"></el-divider>
-    pv: <span>{{websitedataform.pv}}</span>
-    <el-divider direction="vertical"></el-divider>
-    uv: <span>{{websitedataform.uv}}</span>
+    <div>
+      ip: <span>{{websitedataform.ip}}</span>
+      <el-divider direction="vertical"></el-divider>
+      pv: <span>{{websitedataform.pv}}</span>
+      <el-divider direction="vertical"></el-divider>
+      uv: <span>{{websitedataform.uv}}</span>
+    </div>
+    <router-link to="/websitedatadetail">查询以往网站访问数据</router-link>
   </div>
 </template>
 

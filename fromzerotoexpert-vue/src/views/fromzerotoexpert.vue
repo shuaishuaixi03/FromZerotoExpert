@@ -29,15 +29,9 @@ export default {
     logout() {
       this.$axios.get('/logout').then(res => {
         // console.log(res)
-        if (res.data.code === 0) {
-          this.$cookies.remove("username")
-          this.$router.push('/login')
-          alert("退出成功")
-        } else {
-          alert(res.data.msg)
-          this.$cookies.remove("username")
-          this.$router.push('/login')
-        }
+        this.$cookies.remove("username")
+        this.$router.push('/login')
+        alert("退出成功")
       })
     }
   }

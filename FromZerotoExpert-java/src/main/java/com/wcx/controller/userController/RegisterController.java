@@ -31,7 +31,6 @@ public class RegisterController {
         RegisterController.userService = userService;
     }
 
-
     @PostMapping("/register")
     private ResultVO register(@RequestBody @Valid RegisterForm registerForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

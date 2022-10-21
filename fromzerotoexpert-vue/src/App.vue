@@ -16,7 +16,7 @@ export default {
       if ("WebSocket" in window) {
         // console.log("您的浏览器支持 WebSocket!");
         // location.host
-        that.ws = new WebSocket("ws://127.0.0.1:8050/fromzerotoexpert/websocket/test");
+        that.ws = new WebSocket("ws://localhost:8060/fromzerotoexpert/websocket/test");
         that.global.setWs(that.ws);
         that.ws.onopen = function () {
           console.log('websocket连接成功');

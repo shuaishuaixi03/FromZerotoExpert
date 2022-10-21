@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Register from "@/views/user/register";
 import Login from "@/views/user/login";
 import Fromzerotoexpert from "@/views/fromzerotoexpert";
-import Websitedata from "@/components/websitedata";
+import Websitedatadetail from "@/views/websitedatadetail";
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,6 +29,14 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/websitedatadetail',
+    name: 'websitedatadetail',
+    component: Websitedatadetail,
+    meta: {
+      requireAuth: true
+    }
   }
 ]
 

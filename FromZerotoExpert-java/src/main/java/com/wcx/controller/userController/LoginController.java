@@ -4,7 +4,6 @@ import com.wcx.entity.User;
 import com.wcx.forms.LoginForm;
 import com.wcx.forms.UserForm;
 import com.wcx.service.UserService;
-import com.wcx.service.Websocket;
 import com.wcx.utils.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
-
 import static org.springframework.web.util.WebUtils.getCookie;
 
 @RestController
@@ -32,13 +28,8 @@ import static org.springframework.web.util.WebUtils.getCookie;
 public class LoginController {
     @Autowired
     private UserService userService;
-
     @Resource
     private RedisTemplate redisTemplate;
-
-    @Autowired
-    private WebsiteDataUtil websiteDataUtil;
-
     @PostMapping("/login")
     public ResultVO login(@RequestBody @Valid LoginForm loginForm, BindingResult bindingResult,
                           HttpServletRequest request, HttpServletResponse response) {
@@ -59,25 +50,6 @@ public class LoginController {
         String sessionId = session.getId();
         // 根据账号生成accountId
         String accountId = AccountIdUtil.createAccountId(loginForm.getLoginAccount());
-
-        // 当前日期
-        String curDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-
-        // uv + 1
-        if (!redisTemplate.opsForSet().isMember("uv", loginForm.getLoginAccount())) {
-            redisTemplate.opsForSet().add("uv", loginForm.getLoginAccount());
-            int uv = 0;
-            if (redisTemplate.opsForHash().get(curDate, "uv") != null) {
-                uv = (int) redisTemplate.opsForHash().get(curDate, "uv");
-            }
-            redisTemplate.opsForHash().put(curDate, "uv", uv + 1);
-            redisTemplate.expire(curDate, MyTimeUtil.getNowToNextDaySeconds(), TimeUnit.SECONDS);
-            redisTemplate.expire("uv", MyTimeUtil.getNowToNextDaySeconds(), TimeUnit.SECONDS);
-        }
-
-        Websocket.sendMessage(websiteDataUtil.getWebsiteData());
-
-
         // 将accountId 与 sessionId 绑定
         redisTemplate.opsForList().remove(accountId, 0, 0);
         redisTemplate.opsForList().rightPushAll(accountId, sessionId, System.currentTimeMillis());
@@ -103,17 +75,13 @@ public class LoginController {
 //        }
 //        return ResultVOUtil.fail(430, "请重新登录");
 //    }
-
     @GetMapping("/logout")
     public ResultVO logout(HttpServletRequest request) {
 //        if (isLogin(request).getCode() != 0) {
 //            return ResultVOUtil.fail(431, "请先登录");
 //        }
-
         String accountId = getCookie(request, "accountId").getValue();
         redisTemplate.opsForList().remove(accountId, 0, 0);
         return ResultVOUtil.success("退出登录成功");
     }
-
-
 }

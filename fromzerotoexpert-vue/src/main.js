@@ -16,7 +16,7 @@ import VueCookies from 'vue-cookies'
 import cookies from "vue-cookies";
 Vue.use(VueCookies)
 
-axios.defaults.baseURL='http://localhost:8050/fromzerotoexpert'
+axios.defaults.baseURL='http://localhost:8060/fromzerotoexpert'
 axios.defaults.withCredentials=true
 
 import global from './global.js'
@@ -25,9 +25,9 @@ Vue.prototype.global = global
 //后置拦截
 axios.interceptors.response.use(response => {
       let res = response.data;
-      // console.log("===========")
-      // console.log(res)
-      // console.log("===========")
+      console.log("===========")
+      console.log(res)
+      console.log("===========")
       global.ws.onmessage = function(res) {
           res = JSON.parse(res.data)
           cookies.set("ip", res.ip)
@@ -37,11 +37,13 @@ axios.interceptors.response.use(response => {
       if (res.code === 0) {
         return response
       }else {
-        return response
+        alert(res.msg)
+        router.push("/login")
       }
     },
     error => {
-      return Promise.reject(error)
+        console.log("error")
+        return Promise.reject(error)
     }
 )
 
