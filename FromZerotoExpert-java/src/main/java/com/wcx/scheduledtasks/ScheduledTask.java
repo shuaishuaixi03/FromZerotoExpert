@@ -23,9 +23,9 @@ public class ScheduledTask {
         String curDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         WebsiteData websiteData = new WebsiteData();
         websiteData.setDate(curDate);
-        websiteData.setIp((Integer) redisTemplate.opsForHash().get(curDate, "ip"));
-        websiteData.setUv((Integer) redisTemplate.opsForHash().get(curDate, "uv"));
-        websiteData.setPv((Integer) redisTemplate.opsForHash().get(curDate, "pv"));
+        websiteData.setIp(redisTemplate.opsForHash().get(curDate, "ip") == null ? (Integer) redisTemplate.opsForHash().get(curDate, "ip") : 0);
+        websiteData.setUv(redisTemplate.opsForHash().get(curDate, "uv") == null ? (Integer) redisTemplate.opsForHash().get(curDate, "uv") : 0);
+        websiteData.setPv(redisTemplate.opsForHash().get(curDate, "pv") == null ? (Integer) redisTemplate.opsForHash().get(curDate, "pv") : 0);
         websiteDataMapper.insert(websiteData);
     }
 }

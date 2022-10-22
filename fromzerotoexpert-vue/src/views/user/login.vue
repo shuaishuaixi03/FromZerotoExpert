@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import global from "@/global";
+
 export default {
   name: "login",
   data() {
@@ -63,6 +65,11 @@ export default {
     },
     gotoRegister() {
       this.$router.push('/register')
+    }
+  },
+  created() {
+    global.ws.onmessage = function(res) {
+      sessionStorage.setItem("websiteData", res.data)
     }
   }
 }

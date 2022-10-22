@@ -28,9 +28,9 @@ public class MyInterceptor implements HandlerInterceptor {
     //返回值为false，则说明禁止访问
     //返回值为true，则说明允许访问
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
+        countWebsiteData(request, response);
         //不拦截路径（登录路径等等）
-        List<String> asList = Arrays.asList("/fromzerotoexpert/register", "/fromzerotoexpert/login");
+        List<String> asList = Arrays.asList("/fromzerotoexpert/register", "/fromzerotoexpert/login", "/fromzerotoexpert/FromZerotoExpert");
         String uri = request.getRequestURI();
         //1.设置放行路径
         if(asList.contains(uri)){
@@ -43,10 +43,10 @@ public class MyInterceptor implements HandlerInterceptor {
             Cookie cookie = getCookie(request, "accountId");
             String accountId = cookie.getValue();
             String sessionId = (String) redisTemplate.opsForList().index(accountId, 0);
-            if (sessionId == null) {
-                response.getWriter().write(JSONObject.toJSONString(ResultVOUtil.fail(401,"请先登录")));
-                return false;
-            }
+//            if (sessionId == null) {
+//                response.getWriter().write(JSONObject.toJSONString(ResultVOUtil.fail(401,"请先登录")));
+//                return false;
+//            }
             if (sessionId.equals(request.getSession().getId())) {
                 return true;
             } else {
@@ -66,9 +66,18 @@ public class MyInterceptor implements HandlerInterceptor {
         System.out.println("清理.......");
     }
     // 更新网站当日的访问数据并向前端发送通知
-    private void countWebsiteData(HttpServletRequest request) {
+    private void countWebsiteData(HttpServletRequest request, HttpServletResponse response) {
         // 当前日期 (只有日期没有时间)
         String curDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        if (redisTemplate.opsForHash().get(curDate, "ip") == null) {
+            redisTemplate.opsForHash().put(curDate, "ip", 0);
+        }
+        if (redisTemplate.opsForHash().get(curDate, "uv") == null) {
+            redisTemplate.opsForHash().put(curDate, "uv", 0);
+        }
+        if (redisTemplate.opsForHash().get(curDate, "pv") == null) {
+            redisTemplate.opsForHash().put(curDate, "pv", 0);
+        }
         int newIpCount = (int) redisTemplate.opsForHash().get(curDate, "ip");
         int newUvCount = (int) redisTemplate.opsForHash().get(curDate, "uv");
         int newPvCount = (int) redisTemplate.opsForHash().get(curDate, "pv");
@@ -82,13 +91,11 @@ public class MyInterceptor implements HandlerInterceptor {
         // 获取当前时间到第二天凌晨时间的秒数
         long targetSeconds = MyTimeUtil.getNowToNextDaySeconds();
         // 获取请求中Cookie键为UID的值
-        String UID = String.valueOf(getCookie(request, "UID"));
-        if (redisTemplate.opsForSet().isMember("uv", UID)) {
-        } else {
-            Cookie cookie = new Cookie("UID", request.getRemoteHost() + System.currentTimeMillis());
-            // 设置第二天凌晨过期
-            cookie.setMaxAge((int) targetSeconds);
+        if (getCookie(request, "UID") == null) {
             newUvCount ++;
+            Cookie cookie = new Cookie("UID", "UID");
+            cookie.setMaxAge((int) targetSeconds);
+            response.addCookie(cookie);
         }
         newPvCount ++;
         redisTemplate.opsForHash().put(curDate, "ip", newIpCount);

@@ -29,6 +29,8 @@
 <script>
 // import Websitedata from "@/components/websitedata";
 
+import global from "@/global";
+
 export default {
   name: "register",
   // components: {Websitedata},
@@ -76,6 +78,11 @@ export default {
     },
     gotoLogin() {
       this.$router.push('/login')
+    }
+  },
+  created() {
+    global.ws.onmessage = function(res) {
+      sessionStorage.setItem("websiteData", res.data)
     }
   }
 }

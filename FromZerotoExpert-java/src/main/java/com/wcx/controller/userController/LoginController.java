@@ -55,6 +55,7 @@ public class LoginController {
         redisTemplate.opsForList().rightPushAll(accountId, sessionId, System.currentTimeMillis());
         redisTemplate.expire(accountId, 60*60*24, TimeUnit.SECONDS);
         Cookie cookie = new Cookie("accountId",accountId);
+        cookie.setMaxAge(60 * 60 * 24);
         response.addCookie(cookie);
         UserForm userForm = new UserForm();
         BeanUtils.copyProperties(user, userForm);
@@ -84,4 +85,8 @@ public class LoginController {
         redisTemplate.opsForList().remove(accountId, 0, 0);
         return ResultVOUtil.success("退出登录成功");
     }
+
+//    private String getMySessionId() {
+//
+//    }
 }

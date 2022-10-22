@@ -13,27 +13,23 @@
 
 <script>
 
+import global from "@/global";
+
 export default {
   name: "websitedata",
   data() {
     return {
       websitedataform: {
-        ip: this.$cookies.get("ip"),
-        pv: this.$cookies.get("pv"),
-        uv: this.$cookies.get("uv"),
-      },
+        date:'',
+        ip: '',
+        uv: '',
+        pv: '',
+      }
     }
   },
   created() {
-    // const that = this
-    // this.global.ws.onmessage = function(res) {
-    //   res = JSON.parse(res.data)
-    //   // console.log("收到服务器内容", res.ip)
-    //   that.$cookies.set("ip", res.ip)
-    //   that.$cookies.set("pv", res.pv)
-    //   that.$cookies.set("uv", res.uv)
-      // console.log(that.websitedataform)
-    // };
+    // console.log(sessionStorage.getItem("websiteData"))
+    this.websitedataform = JSON.parse(sessionStorage.getItem("websiteData"))
   }
 }
 </script>
